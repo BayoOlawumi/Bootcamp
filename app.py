@@ -9,7 +9,7 @@ import subprocess
 #st.write("Python executable:", sys.executable)
 #st.write("Python version:", sys.version)
 #st.write("Installed packages:")
-#st.code(subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode("utf-8"))
+#st.code(subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode("utf-8"))  
 
 
 load_dotenv()
