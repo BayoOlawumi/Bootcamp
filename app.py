@@ -6,10 +6,10 @@ import streamlit as st
 import sys
 import subprocess
 
-st.write("Python executable:", sys.executable)
-st.write("Python version:", sys.version)
-st.write("Installed packages:")
-st.code(subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode("utf-8"))
+#st.write("Python executable:", sys.executable)
+#st.write("Python version:", sys.version)
+#st.write("Installed packages:")
+#st.code(subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode("utf-8"))
 
 
 load_dotenv()
@@ -27,7 +27,7 @@ else:
 
 # Import other libraries
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_community.document_loaders import UnstructuredPDFLoader
@@ -49,12 +49,13 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 ## streamlit framework
-st.title("Langchain demo for getting Python Question")
+st.title("Demo of Python Questionaire App")
 input_text = st.text_input("What is scope of the question you need")
 
 
 ## Ollama LLama2 model
-llm=Ollama("gemma:2b")
+# Installed Models: llama3.2:1b; deepseek-r1:1.5b
+llm=OllamaLLM(model="llama3.2:1b")
 output_parser = StrOutputParser()
 chain = prompt|llm|output_parser
 
