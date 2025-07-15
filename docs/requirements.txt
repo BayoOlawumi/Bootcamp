@@ -22,3 +22,4 @@ chromadb
 duckduckgo-search
 unstructured
 unstructured[pdf]
+streamlit
